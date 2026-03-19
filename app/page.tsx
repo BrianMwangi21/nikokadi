@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
 import confetti from "canvas-confetti";
 import { CyberGrid, GlitchText, HolographicCard, AnimatedBackground, NairobiSkyline, PageLayout } from "./_components";
@@ -240,8 +241,11 @@ export default function HomePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                           </svg>
                         </div>
-                        <p className="font-[family-name:var(--font-space)] text-[#00f0ff] text-base tracking-wider">
+                        <p className="font-[family-name:var(--font-space)] text-[#00f0ff] text-base tracking-wider mb-1">
                           DROP VOTER PROOF
+                        </p>
+                        <p className="text-[#64748b] text-[10px] tracking-wide max-w-[250px]">
+                          Screenshot of your voter details page from <span className="text-[#00f0ff]">verify.iebc.or.ke</span>
                         </p>
                       </div>
                     )}
@@ -284,7 +288,7 @@ export default function HomePage() {
                         value={claim}
                         onChange={(e) => setClaim(e.target.value)}
                         className="w-full bg-[#0a0a12] border-2 border-[#334155] pl-8 pr-3 py-2 text-white font-[family-name:var(--font-inter)] text-sm focus:border-[#00f0ff] focus:outline-none transition-colors tracking-wider"
-                        placeholder="Your statement i.e Ni sisi tuko"
+                        placeholder="Your statement i.e The People Shall"
                       />
                     </div>
                   </div>
@@ -385,6 +389,18 @@ export default function HomePage() {
             )}
           </div>
         </HolographicCard>
+
+        {/* Disclaimer Card */}
+        <div className="max-w-3xl mx-auto mt-6">
+          <div className="bg-[#0a0a12]/80 border border-[#334155] p-4">
+            <p className="text-[#64748b] text-xs leading-relaxed text-center">
+              <span className="text-[#ff006e] font-bold">How it works:</span> Upload your voter screenshot from verify.iebc.or.ke. 
+              Our system reads it using OCR and mints a cryptographically signed badge. 
+              No personal data is stored — your badge is a self-contained proof. 
+              <Link href="/how-it-works" className="text-[#00f0ff] underline hover:text-[#ff006e] ml-1">Learn more</Link>
+            </p>
+          </div>
+        </div>
       </PageLayout>
     </main>
   );

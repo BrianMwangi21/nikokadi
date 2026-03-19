@@ -36,7 +36,7 @@ export function PageLayout({ children, showDescription = true, footerLinks }: Pa
             Upload a screenshot. Mint a signed badge. Scan the QR to verify.
           </p>
           <p className="text-[#00f0ff] text-[10px] tracking-wider">
-            Best source for screenshot: <a href="https://verify.iebc.or.ke/" target="_blank" rel="noreferrer" className="underline decoration-1 underline-offset-2 hover:text-[#ff006e] transition-colors">verify.iebc.or.ke</a>
+            Best source for screenshot: <a href="https://verify.iebc.or.ke/" target="_blank" rel="noreferrer" className="underline decoration-1 underline-offset-2 decoration-[#ff006e] hover:text-[#ff006e] transition-colors">verify.iebc.or.ke</a>
           </p>
         </div>
       )}
