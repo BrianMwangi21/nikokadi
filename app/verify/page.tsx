@@ -57,21 +57,26 @@ export default async function VerifyPage({ searchParams }: VerifyProps) {
             
             {result.valid ? <ConfettiBurst /> : null}
 
-            {/* Result Section with QR */}
-            <div className="mb-4 pb-4 border-b border-[#334155]">
-              <p className="text-[#ff006e] text-[10px] font-bold tracking-[0.2em] uppercase">
-                VERIFICATION RESULT
-              </p>
-              
-              <div className="flex items-center justify-between gap-4 mt-2">
-                <h1 className={`font-[family-name:var(--font-space)] text-4xl md:text-5xl font-black tracking-wider ${result.valid ? 'text-[#00ff88]' : 'text-[#ff006e]'}`}>
-                  {result.valid ? "VALID" : "INVALID"}
-                </h1>
+            {result.valid ? (
+              /* VALID BADGE LAYOUT */
+              <div className="text-center space-y-4">
+                {/* Verification Result - centered header */}
+                <p className="text-[#ff006e] text-[10px] font-bold tracking-[0.2em] uppercase">
+                  VERIFICATION RESULT
+                </p>
                 
-                {result.valid && badgeUrl && (
-                  <div className="relative shrink-0">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-[#ff006e] to-[#00f0ff] opacity-30 blur" />
-                    <div className="relative bg-[#0a0a12] border border-[#00f0ff] p-1">
+                {/* Alias ako KADI - large prominent text */}
+                <div className="my-4">
+                  <h2 className="font-[family-name:var(--font-space)] text-3xl md:text-4xl font-black tracking-wider text-white">
+                    {result.payload.alias} <span className="text-[#00f0ff]">AKO</span> KADI
+                  </h2>
+                </div>
+                
+                {/* QR Code centered */}
+                {badgeUrl && (
+                  <div className="relative inline-block my-6">
+                    <div className="absolute -inset-2 bg-gradient-to-r from-[#ff006e] via-[#00f0ff] to-[#00ff88] opacity-40 blur-xl" />
+                    <div className="relative bg-[#0a0a12] border-2 border-[#00f0ff] p-2">
                       <QRCodeSVG 
                         value={badgeUrl} 
                         size={140}
@@ -79,46 +84,55 @@ export default async function VerifyPage({ searchParams }: VerifyProps) {
                         bgColor="#0a0a12"
                         fgColor="#00f0ff"
                       />
+                      <div className="absolute -top-0.5 -left-0.5 w-3 h-3 border-l-2 border-t-2 border-[#ff006e]" />
+                      <div className="absolute -top-0.5 -right-0.5 w-3 h-3 border-r-2 border-t-2 border-[#00ff88]" />
+                      <div className="absolute -bottom-0.5 -left-0.5 w-3 h-3 border-l-2 border-b-2 border-[#00ff88]" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 border-r-2 border-b-2 border-[#ff006e]" />
                     </div>
                   </div>
                 )}
+                
+                {/* VALID - green below QR */}
+                <p className="text-[#00ff88] text-xl md:text-2xl font-black tracking-wider font-[family-name:var(--font-space)]">
+                  VALID
+                </p>
+                
+                {/* Verification message */}
+                <p className="text-[#64748b] text-xs mt-2">
+                  Badge verified. No database lookup required.
+                </p>
+                
+                {/* Claim and Issued side by side */}
+                <div className="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-[#334155]">
+                  <div className="bg-[#0a0a12] border border-[#334155] p-3">
+                    <p className="text-[#475569] text-[9px] uppercase tracking-[0.2em] mb-1">Claim</p>
+                    <p className="text-[#00f0ff] text-sm font-bold">
+                      {result.payload.claim}
+                    </p>
+                  </div>
+                  
+                  <div className="bg-[#0a0a12] border border-[#334155] p-3">
+                    <p className="text-[#475569] text-[9px] uppercase tracking-[0.2em] mb-1">Issued</p>
+                    <p className="text-[#64748b] text-xs break-all">
+                      {result.payload.issuedAt}
+                    </p>
+                  </div>
+                </div>
               </div>
-              
-              <p className="mt-2 text-[#64748b] text-xs">
-                {result.valid
-                  ? "Badge verified. No database lookup required."
-                  : "This badge could not be verified."}
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="bg-[#0a0a12] border border-[#334155] p-2">
-                <p className="text-[#475569] text-[9px] uppercase tracking-[0.2em]">Alias</p>
-                <p className="text-[#00f0ff] text-sm font-bold">
-                  {result.valid ? result.payload.alias : "Unknown"}
+            ) : (
+              /* INVALID BADGE LAYOUT */
+              <div className="text-center py-8">
+                <p className="text-[#ff006e] text-[10px] font-bold tracking-[0.2em] uppercase mb-4">
+                  VERIFICATION RESULT
+                </p>
+                <h1 className="font-[family-name:var(--font-space)] text-4xl md:text-5xl font-black tracking-wider text-[#ff006e]">
+                  INVALID
+                </h1>
+                <p className="mt-4 text-[#64748b] text-xs">
+                  This badge could not be verified.
                 </p>
               </div>
-              
-              <div className="bg-[#0a0a12] border border-[#334155] p-2">
-                <p className="text-[#475569] text-[9px] uppercase tracking-[0.2em]">Claim</p>
-                <p className="text-[#00f0ff] text-sm font-bold">
-                  {result.valid ? result.payload.claim : "Not available"}
-                </p>
-              </div>
-              
-              <div className="bg-[#0a0a12] border border-[#334155] p-2">
-                <p className="text-[#475569] text-[9px] uppercase tracking-[0.2em]">Issued</p>
-                <p className="text-[#64748b] text-xs break-all">
-                  {result.valid ? result.payload.issuedAt : "Not available"}
-                </p>
-              </div>
-            </div>
-
-            {result.valid ? (
-              <p className="mt-3 text-[#00ff88] text-xs font-bold uppercase tracking-wider">
-                VERIFICATION COMPLETE
-              </p>
-            ) : null}
+            )}
           </div>
         </div>
 
