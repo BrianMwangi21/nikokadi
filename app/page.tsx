@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
 import confetti from "canvas-confetti";
-import { CyberGrid, GlitchText, HolographicCard, AnimatedBackground, NairobiSkyline, PageLayout } from "./_components";
+import { CyberGrid, GlitchText, HolographicCard, AnimatedBackground, NairobiSkyline, PageLayout, WallpaperDownload } from "./_components";
 
 // Type definitions
 interface EvidenceField {
@@ -345,10 +345,9 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {/* Compact QR */}
+                {/* Compact QR - Clean version for better scanning */}
                 <div className="relative inline-block">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-[#ff006e] via-[#00f0ff] to-[#00ff88] opacity-40 blur-xl" />
-                  <div className="relative bg-[#0a0a12] border-2 border-[#00f0ff] p-2">
+                  <div className="bg-[#0a0a12] border-2 border-[#00f0ff] p-2">
                     <QRCodeSVG 
                       value={badge?.badgeUrl || "https://nikokadi.io"} 
                       size={140}
@@ -356,10 +355,6 @@ export default function HomePage() {
                       bgColor="#0a0a12"
                       fgColor="#00f0ff"
                     />
-                    <div className="absolute -top-0.5 -left-0.5 w-3 h-3 border-l-2 border-t-2 border-[#ff006e]" />
-                    <div className="absolute -top-0.5 -right-0.5 w-3 h-3 border-r-2 border-t-2 border-[#00ff88]" />
-                    <div className="absolute -bottom-0.5 -left-0.5 w-3 h-3 border-l-2 border-b-2 border-[#00ff88]" />
-                    <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 border-r-2 border-b-2 border-[#ff006e]" />
                   </div>
                 </div>
 
@@ -367,6 +362,12 @@ export default function HomePage() {
                 <div className="text-center text-xs">
                   <span className="text-[#00f0ff] font-bold">{alias}</span>
                 </div>
+
+                {/* Wallpaper Download */}
+                <WallpaperDownload 
+                  alias={alias || "Huyu"}
+                  badgeUrl={badge?.badgeUrl || ""}
+                />
 
                 {/* Action Buttons */}
                 <div className="flex flex-col gap-2">

@@ -19,8 +19,6 @@ export function CyberGrid({ lineCount = 20 }: { lineCount?: number }) {
           style={{ left: `${i * (100 / lineCount)}%`, animationDelay: `${i * 0.1}s` }}
         />
       ))}
-      {/* Animated scan line */}
-      <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#ff006e] to-transparent animate-scan" />
     </div>
   );
 }

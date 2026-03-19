@@ -72,11 +72,10 @@ export default async function VerifyPage({ searchParams }: VerifyProps) {
                   </h2>
                 </div>
                 
-                {/* QR Code centered */}
+                {/* QR Code centered - Clean version */}
                 {badgeUrl && (
-                  <div className="relative inline-block my-6">
-                    <div className="absolute -inset-2 bg-gradient-to-r from-[#ff006e] via-[#00f0ff] to-[#00ff88] opacity-40 blur-xl" />
-                    <div className="relative bg-[#0a0a12] border-2 border-[#00f0ff] p-2">
+                  <div className="my-6">
+                    <div className="bg-[#0a0a12] border-2 border-[#00f0ff] p-2 inline-block">
                       <QRCodeSVG 
                         value={badgeUrl} 
                         size={140}
@@ -84,10 +83,6 @@ export default async function VerifyPage({ searchParams }: VerifyProps) {
                         bgColor="#0a0a12"
                         fgColor="#00f0ff"
                       />
-                      <div className="absolute -top-0.5 -left-0.5 w-3 h-3 border-l-2 border-t-2 border-[#ff006e]" />
-                      <div className="absolute -top-0.5 -right-0.5 w-3 h-3 border-r-2 border-t-2 border-[#00ff88]" />
-                      <div className="absolute -bottom-0.5 -left-0.5 w-3 h-3 border-l-2 border-b-2 border-[#00ff88]" />
-                      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 border-r-2 border-b-2 border-[#ff006e]" />
                     </div>
                   </div>
                 )}
