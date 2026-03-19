@@ -21,17 +21,6 @@ export default function ConfettiBurst() {
         zIndex: 9999,
       });
 
-      confetti({
-        particleCount: 7,
-        spread: 72,
-        startVelocity: 48,
-        ticks: 220,
-        scalar: 1.1,
-        origin: { x: 0.5, y: 0.68 },
-        colors,
-        zIndex: 9999,
-      });
-
       if (Date.now() < end) {
         window.setTimeout(frame, 180);
       }
