@@ -1,22 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4eadf;
-  --foreground: #111111;
-  --paper: #fff7ef;
-  --paper-deep: #ead9c7;
-  --ink: #101010;
-  --muted: #5d5248;
-  --accent: #c42d1c;
-  --accent-soft: #ff6a52;
-  --line: rgba(16, 16, 16, 0.14);
+  --background: #050508;
+  --foreground: #e2e8f0;
+  --paper: #0a0a12;
+  --ink: #e2e8f0;
+  --muted: #64748b;
+  --accent-cyan: #00f0ff;
+  --accent-pink: #ff006e;
+  --accent-green: #00ff88;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-ibm-sans);
-  --font-mono: var(--font-ibm-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space);
 }
 
 html {
@@ -26,41 +25,14 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-ibm-sans), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at top left, rgba(196, 45, 28, 0.17), transparent 34%),
-    radial-gradient(circle at 80% 20%, rgba(17, 17, 17, 0.11), transparent 26%),
-    linear-gradient(130deg, rgba(255, 255, 255, 0.3), transparent 55%);
-  mix-blend-mode: multiply;
-  opacity: 0.9;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.18;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 92%);
 }
 
 ::selection {
-  background: rgba(196, 45, 28, 0.18);
-  color: var(--ink);
+  background: rgba(0, 240, 255, 0.3);
+  color: #fff;
 }
 
 a {
@@ -68,18 +40,54 @@ a {
   text-decoration: none;
 }
 
-@keyframes badge-pop {
-  0% {
-    transform: scale(0.98);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.badge-pop {
-  animation: badge-pop 320ms ease-out both;
+::-webkit-scrollbar-track {
+  background: #0a0a12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00f0ff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff006e;
+}
+
+/* Animations for cyberpunk theme */
+@keyframes scan {
+  0%, 100% { transform: translateY(-100%); }
+  50% { transform: translateY(100vh); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 0.3s infinite;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 0.3s infinite;
 }
