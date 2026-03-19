@@ -15,16 +15,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing request body." }, { status: 400 });
   }
 
-  const alias = body.alias?.trim();
-  const claim = body.claim?.trim();
+  const alias = body.alias?.trim() || "Huyu";
+  const claim = body.claim?.trim() || "The People Shall";
   const evidence = body.evidence?.trim() ?? "";
-
-  if (!alias || !claim) {
-    return NextResponse.json(
-      { error: "Alias and claim are required." },
-      { status: 400 },
-    );
-  }
 
   const insight = summarizeEvidence(evidence);
   const token = createBadgeToken({

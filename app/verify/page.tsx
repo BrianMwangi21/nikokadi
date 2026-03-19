@@ -137,16 +137,28 @@ export default async function VerifyPage({ searchParams }: VerifyProps) {
         </div>
 
         {/* Footer */}
-        <footer className="mt-6 text-center">
-          <div className="inline-flex items-center gap-4 text-[10px] tracking-[0.15em] uppercase text-white">
-            <Link href="/" className="hover:text-[#00f0ff] transition-colors">
+        <footer className="mt-6 text-center space-y-3">
+          {/* CREATE BADGE Button */}
+          <div>
+            <Link 
+              href="/" 
+              className="inline-block py-3 px-4 bg-[#ff006e] text-white font-bold text-xs uppercase text-center no-underline hover:bg-[#ff006e]/80 transition-colors"
+            >
               CREATE_BADGE
+            </Link>
+          </div>
+          
+          {/* Links row */}
+          <div className="inline-flex items-center gap-4 text-[10px] tracking-[0.15em] uppercase text-white">
+            <Link href="/how-it-works" className="hover:text-[#00f0ff] transition-colors">
+              HOW_IT_WORKS
             </Link>
             <span className="w-1.5 h-1.5 bg-[#334155] rounded-full" />
             <Link href="https://github.com/BrianMwangi21/nikokadi" className="hover:text-[#00f0ff] transition-colors">
               GITHUB
             </Link>
           </div>
+          
           <p className="mt-2 text-[8px] text-[#334155] tracking-[0.2em]">
             // BUILT FOR KENYA
           </p>

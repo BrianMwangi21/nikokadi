@@ -84,8 +84,8 @@ async function runOcr(file: File, onProgress: (progress: number, message: string
 export default function HomePage() {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
-  const [alias, setAlias] = useState("Kadi Citizen");
-  const [claim, setClaim] = useState("I showed up.");
+  const [alias, setAlias] = useState("");
+  const [claim, setClaim] = useState("");
   const [viewMode, setViewMode] = useState<ViewMode>("form");
   const [progress, setProgress] = useState(0);
   const [stage, setStage] = useState("INITIALIZING...");
@@ -134,10 +134,6 @@ export default function HomePage() {
       setError("UPLOAD REQUIRED");
       return;
     }
-    if (!alias.trim() || !claim.trim()) {
-      setError("FILL ALL FIELDS");
-      return;
-    }
     setError("");
     setBadge(null);
     setViewMode("working");
@@ -167,8 +163,8 @@ export default function HomePage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          alias: alias.trim(),
-          claim: claim.trim(),
+          alias: alias.trim() || "Huyu",
+          claim: claim.trim() || "The People Shall",
           evidence: text,
         }),
       });
@@ -272,7 +268,7 @@ export default function HomePage() {
                         value={alias}
                         onChange={(e) => setAlias(e.target.value)}
                         className="w-full bg-[#0a0a12] border-2 border-[#334155] pl-8 pr-3 py-2 text-white font-[family-name:var(--font-inter)] text-sm focus:border-[#ff006e] focus:outline-none transition-colors tracking-wider"
-                        placeholder="YOUR_NAME"
+                        placeholder="Your name/alias i.e Mzalendo254"
                       />
                     </div>
                   </div>
@@ -288,7 +284,7 @@ export default function HomePage() {
                         value={claim}
                         onChange={(e) => setClaim(e.target.value)}
                         className="w-full bg-[#0a0a12] border-2 border-[#334155] pl-8 pr-3 py-2 text-white font-[family-name:var(--font-inter)] text-sm focus:border-[#00f0ff] focus:outline-none transition-colors tracking-wider"
-                        placeholder="I_SHOWED_UP"
+                        placeholder="Your statement i.e Ni sisi tuko"
                       />
                     </div>
                   </div>
