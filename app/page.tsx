@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { QRCodeSVG } from "qrcode.react";
+import confetti from "canvas-confetti";
 import { CyberGrid, GlitchText, HolographicCard, AnimatedBackground, NairobiSkyline, PageLayout } from "./_components";
 
 // Type definitions
@@ -100,6 +101,33 @@ export default function HomePage() {
     setPreviewUrl(objectUrl);
     return () => URL.revokeObjectURL(objectUrl);
   }, [file]);
+
+  // Confetti effect when mint is successful
+  useEffect(() => {
+    if (viewMode === "ready") {
+      const end = Date.now() + 1800;
+      const colors = ["#ff006e", "#00f0ff", "#00ff88", "#ffffff"];
+
+      const frame = () => {
+        confetti({
+          particleCount: 7,
+          spread: 72,
+          startVelocity: 48,
+          ticks: 220,
+          scalar: 1.1,
+          origin: { x: 0.5, y: 0.68 },
+          colors,
+          zIndex: 9999,
+        });
+
+        if (Date.now() < end) {
+          window.setTimeout(frame, 180);
+        }
+      };
+
+      window.setTimeout(frame, 120);
+    }
+  }, [viewMode]);
 
   async function mintBadge() {
     if (!file) {
@@ -310,6 +338,13 @@ export default function HomePage() {
 
             {viewMode === "ready" && (
               <div className="text-center space-y-3">
+                {/* Success Message */}
+                <div className="mb-2">
+                  <p className="text-[#00ff88] text-sm font-bold tracking-wider uppercase animate-pulse">
+                    UKO KADI! NICE!
+                  </p>
+                </div>
+
                 {/* Compact QR */}
                 <div className="relative inline-block">
                   <div className="absolute -inset-2 bg-gradient-to-r from-[#ff006e] via-[#00f0ff] to-[#00ff88] opacity-40 blur-xl" />
