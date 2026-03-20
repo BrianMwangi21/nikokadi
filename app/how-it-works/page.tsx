@@ -47,7 +47,7 @@ export default function HowItWorksPage() {
               </p>
               <p className="text-[#64748b] text-sm leading-6">
                 Niko Kadi is a digital badge system that lets you prove you are a registered voter — without exposing your personal information. 
-                Think of it as a digital "I Voted" sticker, but one that actually proves you registered, not just that you voted.
+                Think of it as a digital &quot;I Voted&quot; sticker, but one that actually proves you registered, not just that you voted.
               </p>
             </div>
 
@@ -71,7 +71,7 @@ export default function HowItWorksPage() {
                       <p className="text-[#64748b] text-sm leading-5">
                         Go to <a href="https://verify.iebc.or.ke" target="_blank" rel="noreferrer" className="text-[#00f0ff] underline underline-offset-2 decoration-1 decoration-[#ff006e] hover:text-[#ff006e] transition-colors">verify.iebc.or.ke</a> and check your voter registration. 
                         When you see the title <span className="text-[#00ff88]">Voter found! Details as below:</span> with your details, take a screenshot. 
-                        Upload that screenshot here. <span className="text-[#ff006e]">Only the screenshot with the "Voter Found" page works.</span>
+                        Upload that screenshot here. <span className="text-[#ff006e]">Only the screenshot with the &quot;Voter Found&quot; page works.</span>
                       </p>
                     </div>
                   </div>
@@ -89,7 +89,7 @@ export default function HowItWorksPage() {
                       </p>
                       <p className="text-[#64748b] text-sm leading-5">
                         Our system uses OCR (Optical Character Recognition) to read the text in your screenshot. 
-                        It looks for specific voter-registration keywords like "IEBC", "voter found", "polling station", and your personal details. 
+                        It looks for specific voter-registration keywords like &quot;IEBC&quot;, &quot;voter found&quot;, &quot;polling station&quot;, and your personal details. 
                         We do not save your screenshot — it is processed instantly and then discarded.
                       </p>
                     </div>
@@ -107,7 +107,7 @@ export default function HowItWorksPage() {
                         Mint Your Badge
                       </p>
                       <p className="text-[#64748b] text-sm leading-5">
-                        If the screenshot is valid (shows "Voter Found" with your details), we create a cryptographically signed badge. 
+                        If the screenshot is valid (shows &quot;Voter Found&quot; with your details), we create a cryptographically signed badge. 
                         This badge contains your chosen name/alias, your statement, and a summary of the proof (not the full screenshot). 
                         <span className="text-[#00ff88]">No database stores your data.</span> The badge is a self-contained token that can be verified by anyone.
                       </p>
@@ -240,7 +240,7 @@ export default function HowItWorksPage() {
             </Link>
           </div>
           <p className="mt-2 text-[8px] text-[#334155] tracking-[0.2em]">
-            // BUILT FOR KENYA
+            {"// BUILT FOR KENYA"}
           </p>
         </footer>
       </div>

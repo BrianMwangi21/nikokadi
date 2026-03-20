@@ -133,13 +133,13 @@ export default async function VerifyPage({ searchParams }: VerifyProps) {
 
         {/* Footer */}
         <footer className="mt-6 text-center space-y-3">
-          {/* CREATE BADGE Button */}
+          {/* Create your own badge Button */}
           <div>
             <Link 
               href="/" 
               className="inline-block py-3 px-4 bg-[#ff006e] text-white font-bold text-xs uppercase text-center no-underline hover:bg-[#ff006e]/80 transition-colors"
             >
-              CREATE_BADGE
+              Create your own badge
             </Link>
           </div>
           
@@ -155,7 +155,7 @@ export default async function VerifyPage({ searchParams }: VerifyProps) {
           </div>
           
           <p className="mt-2 text-[8px] text-[#334155] tracking-[0.2em]">
-            // BUILT FOR KENYA
+            {"// BUILT FOR KENYA"}
           </p>
         </footer>
       </div>

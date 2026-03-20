@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
 import confetti from "canvas-confetti";
-import { CyberGrid, GlitchText, HolographicCard, AnimatedBackground, NairobiSkyline, PageLayout, WallpaperDownload } from "./_components";
+import { CyberGrid, HolographicCard, AnimatedBackground, NairobiSkyline, PageLayout, WallpaperDownload, CopyLinkButton } from "./_components";
 
 // Type definitions
 interface EvidenceField {
@@ -224,6 +224,7 @@ export default function HomePage() {
                     {previewUrl ? (
                       <div className="relative">
                         <div className="absolute -inset-2 bg-[#00f0ff]/20 blur-lg" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                           src={previewUrl} 
                           alt="Preview" 
@@ -368,6 +369,9 @@ export default function HomePage() {
                   alias={alias || "Huyu"}
                   badgeUrl={badge?.badgeUrl || ""}
                 />
+
+                {/* Copy Link */}
+                <CopyLinkButton badgeUrl={badge?.badgeUrl || ""} />
 
                 {/* Action Buttons */}
                 <div className="flex flex-col gap-2">

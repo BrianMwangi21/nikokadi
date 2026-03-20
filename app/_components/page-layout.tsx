@@ -60,7 +60,7 @@ export function PageLayout({ children, showDescription = true, footerLinks }: Pa
           ))}
         </div>
         <p className="mt-2 text-[8px] text-[#334155] tracking-[0.2em]">
-          // BUILT FOR KENYA
+          {"// BUILT FOR KENYA"}
         </p>
       </footer>
     </div>

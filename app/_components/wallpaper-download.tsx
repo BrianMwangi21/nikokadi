@@ -39,64 +39,60 @@ export function WallpaperDownload({ alias, badgeUrl }: WallpaperDownloadProps) {
       ctx.fillStyle = '#0a0a12';
       ctx.fillRect(0, 0, 1080, 1920);
 
-      // Holographic border
-      const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
-      gradient.addColorStop(0, '#00f0ff');
-      gradient.addColorStop(0.5, '#ff006e');
-      gradient.addColorStop(1, '#00ff88');
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 8;
-      ctx.strokeRect(20, 20, 1040, 1880);
-
       // Title
       ctx.textAlign = 'center';
       ctx.fillStyle = '#00f0ff';
       ctx.font = 'bold 80px monospace';
-      ctx.fillText('NIKO KADI', 540, 150);
+      ctx.fillText('NIKO KADI', 540, 280);
 
       ctx.fillStyle = '#ff006e';
       ctx.font = 'bold 24px monospace';
-      ctx.fillText('PROOF OF PARTICIPATION', 540, 200);
+      ctx.fillText('PROOF OF PARTICIPATION', 540, 330);
 
       // Main text - Alias
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 100px sans-serif';
-      ctx.fillText((alias || 'Huyu').toUpperCase(), 540, 450);
+      ctx.fillText((alias || 'Huyu').toUpperCase(), 540, 540);
 
       // AKO
       ctx.fillStyle = '#00f0ff';
       ctx.font = 'bold 80px sans-serif';
-      ctx.fillText('AKO', 540, 550);
+      ctx.fillText('AKO', 540, 640);
 
       // KADI
       ctx.fillStyle = '#00ff88';
       ctx.font = 'bold 120px sans-serif';
-      ctx.fillText('KADI', 540, 680);
+      ctx.fillText('KADI', 540, 770);
 
       // Load and draw QR code
       const qrImage = new Image();
       qrImage.onload = () => {
         // Draw QR centered
-        ctx.drawImage(qrImage, 290, 800, 500, 500);
+        ctx.drawImage(qrImage, 290, 880, 500, 500);
         
         // Border around QR
         ctx.strokeStyle = '#00f0ff';
         ctx.lineWidth = 4;
-        ctx.strokeRect(290, 800, 500, 500);
+        ctx.strokeRect(290, 880, 500, 500);
 
         // Instructions
         ctx.fillStyle = '#64748b';
         ctx.font = '32px sans-serif';
-        ctx.fillText('Scan to verify this badge', 540, 1380);
+        ctx.fillText('Scan to verify this badge', 540, 1450);
+
+        // Create your own badge text
+        ctx.fillStyle = '#475569';
+        ctx.font = '24px sans-serif';
+        ctx.fillText('Create your own badge at', 540, 1640);
 
         // URL
         ctx.fillStyle = '#00f0ff';
         ctx.font = 'bold 40px monospace';
-        ctx.fillText('nikokadike.vercel.app', 540, 1680);
+        ctx.fillText('nikokadike.vercel.app', 540, 1690);
 
         ctx.fillStyle = '#475569';
         ctx.font = '24px monospace';
-        ctx.fillText('// BUILT FOR KENYA', 540, 1730);
+        ctx.fillText('// BUILT FOR KENYA', 540, 1760);
 
         // Download
         const link = document.createElement('a');
